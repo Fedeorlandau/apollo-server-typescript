@@ -22,16 +22,17 @@ jobs:
       - uses: pnpm/action-setup@v2.0.1
         name: Install pnpm
         with:
+          run_install: true
           version: 7
       
       - name: Check linting
-        run: pnpm run lint
+        run: pnpm lint
       
       - name: Build typescript
-        run: pnpm run tsc
+        run: pnpm tsc
       
       - name: Remove dist folder
         run: rm -rf ./dist
       
       - name: Test
-        run: pnpm run test --coverage --detectOpenHandles --forceExit
+        run: pnpm test --coverage --detectOpenHandles --forceExit
