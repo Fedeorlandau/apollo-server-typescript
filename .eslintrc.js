@@ -1,7 +1,6 @@
 module.exports = {
   root: true,
   extends: [
-    'prettier',
     'airbnb-base',
     'airbnb-typescript/base'
   ],
