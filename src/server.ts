@@ -1,12 +1,10 @@
 import { ApolloServer } from 'apollo-server';
-import resolvers from './resolvers';
-import TrackAPI from './datasources/track-api';
-import typeDefs from './schema';
+import TrackAPI from './datasources/api';
+import schema from './schema';
 
 export default async function startApolloServer() {
   const server = new ApolloServer({
-    typeDefs,
-    resolvers,
+    schema,
     dataSources: () => ({
       trackAPI: new TrackAPI(),
     }),

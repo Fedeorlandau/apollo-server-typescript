@@ -1,18 +1,14 @@
 import { ApolloError } from 'apollo-server';
-import { Resolvers } from './resolvers-types';
+import { Resolvers } from '../resolvers-types';
 
-const resolvers: Resolvers = {
+const TrackResolvers: Resolvers = {
   Query: {
-    // Say hello query
-    hello: (_parent, { name }) => `Hello ${name || 'World'}`,
     // returns an array of Tracks that will be used to populate the homepage grid of our web client
     tracksForHome: (_, __, { dataSources }) => dataSources.trackAPI.getTracksForHome(),
 
     // get a single track by ID, for the track page
     track: (_, { id }, { dataSources }) => dataSources.trackAPI.getTrack(id),
 
-    // get a single module by ID, for the module detail page
-    module: (_, { id }, { dataSources }) => dataSources.trackAPI.getModule(id),
   },
   Mutation: {
     // increments a track's numberOfViews property
@@ -45,15 +41,9 @@ const resolvers: Resolvers = {
   },
   Track: {
     author: ({ authorId }, _, { dataSources }) => dataSources.trackAPI.getAuthor(authorId),
-
     modules: ({ id }, _, { dataSources }) => dataSources.trackAPI.getTrackModules(id),
-
-    durationInSeconds: ({ length }) => length || 0,
-  },
-
-  Module: {
     durationInSeconds: ({ length }) => length || 0,
   },
 };
 
-export default resolvers;
+export default TrackResolvers;

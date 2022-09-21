@@ -12,7 +12,7 @@ export default class TrackAPI extends RESTDataSource {
   }
 
   getAuthor(id) {
-    return this.get(`certification/${id}`);
+    return this.get(`author/${id}`);
   }
 
   getTrack(trackId) {
