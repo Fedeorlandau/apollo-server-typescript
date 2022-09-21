@@ -26,6 +26,7 @@ specifiers:
   typescript: ^4.8.3
 
 dependencies:
+  '@graphql-tools/schema': 9.0.4_graphql@15.8.0
   apollo-datasource-rest: 0.11.0_graphql@15.8.0
   apollo-server: 3.10.2_graphql@15.8.0
   graphql: 15.8.0
@@ -34,7 +35,6 @@ devDependencies:
   '@graphql-codegen/cli': 2.12.0_gmlgyp77vkmokzyaqr6k7ao6hm
   '@graphql-codegen/typescript': 2.7.3_graphql@15.8.0
   '@graphql-codegen/typescript-resolvers': 2.7.3_graphql@15.8.0
-  '@graphql-tools/schema': 9.0.4_graphql@15.8.0
   '@types/jest': 29.0.3
   '@types/node': 18.7.18
   '@types/supertest': 2.0.12
