@@ -23,6 +23,11 @@ export type Author = {
   photo?: Maybe<Scalars['String']>;
 };
 
+export type Query = {
+  __typename?: 'Query';
+  ping?: Maybe<Scalars['String']>;
+};
+
 export type WithIndex<TObject> = TObject & Record<string, any>;
 export type ResolversObject<TObject> = WithIndex<TObject>;
 
@@ -96,6 +101,7 @@ export type ResolversTypes = ResolversObject<{
   Author: ResolverTypeWrapper<Author>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   ID: ResolverTypeWrapper<Scalars['ID']>;
+  Query: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']>;
 }>;
 
@@ -104,6 +110,7 @@ export type ResolversParentTypes = ResolversObject<{
   Author: Author;
   Boolean: Scalars['Boolean'];
   ID: Scalars['ID'];
+  Query: {};
   String: Scalars['String'];
 }>;
 
@@ -114,7 +121,12 @@ export type AuthorResolvers<ContextType = any, ParentType extends ResolversParen
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
+export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
+  ping?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+}>;
+
 export type Resolvers<ContextType = any> = ResolversObject<{
   Author?: AuthorResolvers<ContextType>;
+  Query?: QueryResolvers<ContextType>;
 }>;
 

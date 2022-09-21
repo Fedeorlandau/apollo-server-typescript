@@ -4,6 +4,10 @@ import { ModuleResolvers, ModuleTypes } from './module';
 import { TrackResolvers, TrackTypes } from './track';
 
 const deafultTypeDefs = gql`
+  type Query {
+    ping: String
+  }
+
   "Author of a complete Track or a Module"
   type Author {
     id: ID!
@@ -13,9 +17,16 @@ const deafultTypeDefs = gql`
     photo: String
   }
 `;
+
+const defaultResolvers = {
+  Query: {
+    ping: () => 'pong',
+  },
+};
+
 const schema = makeExecutableSchema({
   typeDefs: [deafultTypeDefs, ModuleTypes, TrackTypes],
-  resolvers: [ModuleResolvers, TrackResolvers],
+  resolvers: [defaultResolvers, ModuleResolvers, TrackResolvers],
 });
 
 export default schema;

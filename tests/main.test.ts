@@ -2,10 +2,9 @@ import request from 'supertest';
 import { getTestUtils } from './utils';
 
 const queryData = {
-  query: `query sayHello($name: String) {
-    hello(name: $name)
+  query: `query DoPing {
+    ping
   }`,
-  variables: { name: 'world' },
 };
 
 describe('sanity check', () => {
@@ -13,6 +12,6 @@ describe('sanity check', () => {
     const { url } = getTestUtils();
     const response = await request(url).post('/').send(queryData);
     expect(response.error).toBeFalsy();
-    expect(response.body.data?.hello).toBe('Hello world');
+    expect(response.body.data?.ping).toBe('pong');
   });
 });
